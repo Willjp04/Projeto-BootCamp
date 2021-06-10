@@ -23,7 +23,7 @@ import com.project.bootcamp.service.StockService;
 @RestController
 @RequestMapping(value = "/stock")
 public class StockController {
-	
+
 	@Autowired // CONTROLA QUANDO VAI OU NÃO INSTANCIAR ESSA CAMADA
 	private StockService service;
 
