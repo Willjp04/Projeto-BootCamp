@@ -23,11 +23,14 @@ import com.project.bootcamp.service.StockService;
 @RestController
 @RequestMapping(value = "/stock")
 public class StockController {
+	
+	@Autowired // CONTROLA QUANDO VAI OU NÃO INSTANCIAR ESSA CAMADA
+	private StockService service;
 
 	// INSERIR NA BASE DE DADOS
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<StockDTO> save(@Valid @RequestBody StockDTO dto) {
-		return ResponseEntity.ok(dto);
+		return ResponseEntity.ok(service.save(dto));
 	}
 
 	// ATUALIZAR ALGO NA BASE DE DADOS
