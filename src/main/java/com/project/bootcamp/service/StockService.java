@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.bootcamp.mapper.StockMapper;
 import com.project.bootcamp.model.Stock;
@@ -20,10 +21,12 @@ public class StockService {
 	@Autowired
 	private StockMapper mapper;
 
+	@Transactional // É AQUILO QUE VAI CONTROLAR A TRANSAÇÃO
+	
 	public StockDTO save (@Valid StockDTO dto) {
 		Stock stock = mapper.toEntity(dto);
 		repository.save(stock);
-		return dto;
+		return mapper.toDto(stock);
 
 		
 	}
